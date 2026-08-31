@@ -1,0 +1,16 @@
+the-collectors-lounge
+│
+├── index.html
+├── styles.css
+├── script.js
+├── README.md
+│
+└── assets/
+    ├── hero.jpg
+    ├── boutique.jpg
+    ├── atrium.jpg
+    ├── collectors-room.jpg
+    ├── experience.jpg
+    ├── city32.jpg
+    ├── merida.jpg
+    └── ...
