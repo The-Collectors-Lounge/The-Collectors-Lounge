@@ -6,11 +6,20 @@ the-collectors-lounge
 ├── README.md
 │
 └── assets/
-    ├── hero.jpg
-    ├── boutique.jpg
-    ├── atrium.jpg
-    ├── collectors-room.jpg
-    ├── experience.jpg
+    ├── atrium-neutral.jpg
+    ├── boutique-neutral.jpg
     ├── city32.jpg
-    ├── merida.jpg
-    └── ...
+    ├── city32-location.jpg
+    ├── experience-new.jpg
+    ├── hero-v4.jpg
+    ├── identities-neutral.jpg
+    ├── lounge-atrium.jpg
+    ├── lounge-boutique.jpg
+    ├── lounge-details.jpg
+    ├── lounge-exterior.jpg
+    ├── lounge-hosted.jpg
+    ├── lounge-view-01.jpg
+    ├── lounge-view-02.jpg
+    ├── lounge-view-03.jpg
+    ├── merida-cathedral.jpg
+    ├── merida-church.jpg
