@@ -1,9 +1,10 @@
 the-collectors-lounge
-├── index.html
-├── styles.css
-├── script.js
-├── README.md
 │
+├── CNAME
+├── index.html       ← ici
+├── styles.css       ← ici
+├── script.js        ← ici
+├── README.md
 └── assets/
     ├── atrium-neutral.jpg
     ├── boutique-neutral.jpg
