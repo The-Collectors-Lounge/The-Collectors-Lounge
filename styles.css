@@ -135,23 +135,14 @@ a{
 }
 
 .hero-brand{
-  margin-bottom:25px;
-}
-
-.hero-brand-title{
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:clamp(17px,1.7vw,23px);
-  font-weight:500;
-  letter-spacing:.17em;
-  line-height:1;
+  margin-bottom:28px;
 }
 
 .hero-brand-location{
-  margin-top:8px;
   font-family:"Manrope",Arial,sans-serif;
-  font-size:8px;
+  font-size:9px;
   font-weight:400;
-  letter-spacing:.25em;
+  letter-spacing:.28em;
   text-transform:uppercase;
   color:#ddd5c8;
 }
