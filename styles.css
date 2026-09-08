@@ -1043,14 +1043,12 @@ footer{
     margin-left:7vw;
     transform:translateY(-2vh);
   }
-
-  .hero-brand-title{
-    font-size:18px;
-  }
-
+  
   .hero-brand-location{
     font-size:7px;
+    letter-spacing:.22em;
   }
+
 
   .hero-foot{
     left:7vw;
