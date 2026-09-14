@@ -9,10 +9,10 @@ export default {
     }
 
     if (url.pathname.startsWith("/api/")) {
-      return new Response(JSON.stringify({ error: "Not found" }), {
-        status: 404,
-        headers: { "content-type": "application/json; charset=utf-8" }
-      });
+      return new Response(
+        JSON.stringify({ error: "Not found" }),
+        { status: 404, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } }
+      );
     }
 
     return env.ASSETS.fetch(request);
