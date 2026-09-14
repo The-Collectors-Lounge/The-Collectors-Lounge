@@ -11,7 +11,6 @@ export async function onRequestPost({ request, env }) {
   try {
     const data = await request.json();
 
-    // Honeypot anti-spam
     if (clean(data.company, 200)) return json({ ok: true });
 
     const name = clean(data.name, 200);
@@ -34,69 +33,50 @@ export async function onRequestPost({ request, env }) {
       return json({ error: "Please enter a valid email address." }, 400);
     }
 
-    if (!env.RESEND_API_KEY) {
-      console.error("Missing RESEND_API_KEY");
-      return json({ error: "Contact service configuration error: missing API key." }, 503);
-    }
-
-    if (!env.CONTACT_FROM || !env.CONTACT_TO) {
-      console.error("Missing CONTACT_FROM or CONTACT_TO", {
+    if (!env.RESEND_API_KEY || !env.CONTACT_FROM || !env.CONTACT_TO) {
+      console.error("Missing contact configuration", {
+        hasApiKey: Boolean(env.RESEND_API_KEY),
         hasFrom: Boolean(env.CONTACT_FROM),
         hasTo: Boolean(env.CONTACT_TO)
       });
-      return json({ error: "Contact service configuration error: missing sender or recipient." }, 503);
+      return json({ error: "Contact service configuration error." }, 503);
     }
-
-    const subject = `TCL enquiry — ${enquiry} — ${name}`;
-
-    const text = [
-      `Name / Brand: ${name}`,
-      `Enquiry: ${enquiry}`,
-      `Phone: ${phone}`,
-      `Email: ${email}`,
-      "",
-      message
-    ].join("\n");
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${env.RESEND_API_KEY}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "User-Agent": "The-Collectors-Lounge-Contact-Form/1.0"
       },
       body: JSON.stringify({
         from: env.CONTACT_FROM,
         to: [env.CONTACT_TO],
         reply_to: email,
-        subject,
-        text
+        subject: `TCL enquiry — ${enquiry} — ${name}`,
+        text: [
+          `Name / Brand: ${name}`,
+          `Enquiry: ${enquiry}`,
+          `Phone: ${phone}`,
+          `Email: ${email}`,
+          "",
+          message
+        ].join("\n")
       })
     });
 
     if (!response.ok) {
       const raw = await response.text();
-      let providerMessage = raw;
-
-      try {
-        const parsed = JSON.parse(raw);
-        providerMessage = parsed.message || parsed.error || raw;
-      } catch {}
-
       console.error("Resend error", {
         status: response.status,
-        message: providerMessage
+        body: raw
       });
-
-      return json({
-        error: `Resend error ${response.status}: ${providerMessage}`
-      }, 502);
+      return json({ error: "Unable to send your enquiry. Please try again." }, 502);
     }
 
     return json({ ok: true });
   } catch (error) {
     console.error("Contact handler error", error);
-    return json({
-      error: "Contact service error. Please try again."
-    }, 500);
+    return json({ error: "Unable to send your enquiry. Please try again." }, 500);
   }
 }
