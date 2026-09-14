@@ -77,3 +77,5 @@ V5.10 refinement: City32 exterior image is displayed at its full 16:9 ratio with
 
 
 V5.10 City32 refinement: the two City32 images are grouped in a single left column, stacked and aligned; the exterior image is displayed at its natural ratio so it remains complete. The copy sits in the right column, matching the supplied reference composition.
+
+Website deployment updated.
