@@ -74,4 +74,29 @@
 </form>
 </section>
 </main><footer><span>© 2026 THE COLLECTORS LOUNGE</span><span>CITY 32 · MÉRIDA · MEXICO</span><span class="footer-links"><a data-i18n="legal_link" href="legal.html">Legal Notice</a><a data-i18n="privacy_link" href="privacy.html">Privacy</a></span></footer><script src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  const targets = document.querySelectorAll(
+    '.intro .copy, .space-section .space-gallery figure, .offer-grid article, ' +
+    '.community-grid > div, .experience-copy, .experience-image, .city32-copy, ' +
+    '.location-copy, .statement h2, .support-grid > div, .contact-intro, .contact-form'
+  );
+  targets.forEach(el=>el.classList.add('tcl-reveal'));
+  if(!('IntersectionObserver' in window)){
+    targets.forEach(el=>el.classList.add('tcl-visible'));
+    return;
+  }
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('tcl-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+  targets.forEach(el=>io.observe(el));
+});
+</script>
+
 </body></html>

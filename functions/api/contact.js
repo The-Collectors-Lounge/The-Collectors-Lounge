@@ -1,16 +1,22 @@
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
-    headers: { "content-type": "application/json; charset=utf-8" }
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store"
+    }
   });
 
 const clean = (value, max = 4000) =>
-  String(value || "").trim().slice(0, max);
+  typeof value === "string" ? value.trim().slice(0, max) : "";
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function onRequestPost({ request, env }) {
   try {
     const data = await request.json();
 
+    // Honeypot: legitimate visitors leave this empty.
     if (clean(data.company, 200)) return json({ ok: true });
 
     const name = clean(data.name, 200);
@@ -25,58 +31,63 @@ export async function onRequestPost({ request, env }) {
       "Retail / Brand Presence"
     ];
 
-    if (!name || !phone || !email || !message || !allowed.includes(enquiry)) {
-      return json({ error: "Please complete all fields." }, 400);
+    if (
+      !name ||
+      !phone ||
+      !message ||
+      !emailPattern.test(email) ||
+      !allowed.includes(enquiry) ||
+      data.privacy_ack !== "yes"
+    ) {
+      return json({ error: "Please complete all required fields." }, 400);
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return json({ error: "Please enter a valid email address." }, 400);
+    const apiKey = env.RESEND_API_KEY;
+    const from = env.CONTACT_FROM || "brands@thecollectorslounge.mx";
+    const to = env.CONTACT_TO || "brands@thecollectorslounge.mx";
+
+    if (!apiKey) {
+      console.error("RESEND_API_KEY is missing");
+      return json({ error: "Unable to send your enquiry right now." }, 503);
     }
 
-    if (!env.RESEND_API_KEY || !env.CONTACT_FROM || !env.CONTACT_TO) {
-      console.error("Missing contact configuration", {
-        hasApiKey: Boolean(env.RESEND_API_KEY),
-        hasFrom: Boolean(env.CONTACT_FROM),
-        hasTo: Boolean(env.CONTACT_TO)
-      });
-      return json({ error: "Contact service configuration error." }, 503);
-    }
+    const subject = `TCL enquiry — ${enquiry} — ${name}`;
+    const text = [
+      `Name / Brand: ${name}`,
+      `Enquiry: ${enquiry}`,
+      `Phone: ${phone}`,
+      `Email: ${email}`,
+      `Privacy policy acknowledged: yes`,
+      `Marketing consent: ${data.marketing_consent === "yes" ? "yes" : "no"}`,
+      "",
+      message
+    ].join("\n");
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+        "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        "User-Agent": "The-Collectors-Lounge-Contact-Form/1.0"
+        "User-Agent": "The-Collectors-Lounge-Website/1.0"
       },
       body: JSON.stringify({
-        from: env.CONTACT_FROM,
-        to: [env.CONTACT_TO],
+        from,
+        to: [to],
         reply_to: email,
-        subject: `TCL enquiry — ${enquiry} — ${name}`,
-        text: [
-          `Name / Brand: ${name}`,
-          `Enquiry: ${enquiry}`,
-          `Phone: ${phone}`,
-          `Email: ${email}`,
-          "",
-          message
-        ].join("\n")
+        subject,
+        text
       })
     });
 
     if (!response.ok) {
-      const raw = await response.text();
-      console.error("Resend error", {
-        status: response.status,
-        body: raw
-      });
-      return json({ error: "Unable to send your enquiry. Please try again." }, 502);
+      const providerError = await response.text();
+      console.error("Resend error", response.status, providerError);
+      return json({ error: "Unable to send your enquiry right now." }, 502);
     }
 
     return json({ ok: true });
   } catch (error) {
-    console.error("Contact handler error", error);
-    return json({ error: "Unable to send your enquiry. Please try again." }, 500);
+    console.error("Contact error", error);
+    return json({ error: "Unable to process your enquiry." }, 500);
   }
 }

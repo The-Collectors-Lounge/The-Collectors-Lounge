@@ -320,3 +320,696 @@ footer{display:flex;align-items:center;justify-content:space-between;gap:20px;ba
   html{scroll-behavior:auto}
   *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+
+
+/* =========================================================
+   THE COLLECTORS LOUNGE — V6.1 ART DIRECTION PREVIEW
+   ========================================================= */
+
+:root{
+  --tcl-ink:#191815;
+  --tcl-ivory:#f4efe6;
+  --tcl-paper:#eee7dc;
+  --tcl-sand:#d2c6b6;
+  --tcl-gold:#9b7b48;
+  --tcl-line:rgba(25,24,21,.16);
+  --tcl-dark-line:rgba(244,239,230,.20);
+  --tcl-ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* --- 01 HERO: cinematic, quieter, more editorial --- */
+.hero{
+  min-height:100svh;
+  height:min(100svh,980px);
+  background:var(--tcl-ink);
+}
+.hero-img{
+  object-position:center 46%;
+  transform:scale(1.015);
+}
+.hero-shade{
+  background:
+    linear-gradient(90deg,rgba(18,17,15,.82) 0%,rgba(18,17,15,.42) 43%,rgba(18,17,15,.10) 78%),
+    linear-gradient(0deg,rgba(18,17,15,.40),transparent 35%);
+}
+.hero-content{
+  width:min(790px,76vw);
+  margin-left:10vw;
+  padding-top:clamp(40px,7vh,90px);
+}
+.hero-content h1{
+  font-size:clamp(4.5rem,8vw,8.4rem);
+  line-height:.82;
+  letter-spacing:-.035em;
+  margin:0;
+}
+.hero-content .lead{
+  max-width:540px;
+  margin-top:42px;
+  font-size:clamp(14px,1.1vw,16px);
+  line-height:1.8;
+}
+.hero-cta{
+  margin-top:38px;
+  font-size:10px;
+  letter-spacing:.18em;
+}
+.hero-foot{
+  left:10vw;
+  right:auto;
+  bottom:30px;
+  letter-spacing:.23em;
+  opacity:.76;
+}
+
+/* --- Shared editorial labels --- */
+.section>.label,
+.section-head>.label,
+.contact .label,
+.statement>p:first-child{
+  font-size:9px;
+  letter-spacing:.25em;
+}
+
+/* --- 02 THE HOUSE: more asymmetry and silence --- */
+.intro{
+  grid-template-columns:.42fr 1.58fr;
+  gap:8vw;
+  padding-top:clamp(9rem,14vw,14rem);
+  padding-bottom:clamp(9rem,14vw,14rem);
+}
+.intro .label{
+  padding-top:12px;
+}
+.copy{
+  max-width:820px;
+}
+.copy h2{
+  font-size:clamp(4rem,7vw,7rem);
+  line-height:.86;
+  letter-spacing:-.025em;
+  margin-bottom:55px;
+}
+.copy p{
+  max-width:680px;
+  font-size:15px;
+  line-height:1.9;
+}
+.copy .gold-note{
+  max-width:600px;
+  margin-top:42px;
+  padding-top:18px;
+  border-top:1px solid rgba(155,123,72,.45);
+  font-size:11px!important;
+  line-height:1.7;
+  letter-spacing:.08em;
+}
+
+/* --- 03 THE SPACE: editorial mosaic --- */
+.space-section{
+  padding-top:clamp(8rem,12vw,12rem);
+  padding-bottom:clamp(8rem,12vw,12rem);
+}
+.space-section .section-head{
+  grid-template-columns:.55fr 1.1fr .75fr;
+  margin-bottom:75px;
+}
+.space-section .section-head h2{
+  font-size:clamp(4rem,6.5vw,6.8rem);
+  line-height:.86;
+  letter-spacing:-.025em;
+}
+.space-gallery{
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:22px;
+  margin-bottom:24px;
+}
+.space-gallery figure{
+  aspect-ratio:auto;
+  height:clamp(360px,38vw,590px);
+}
+.space-gallery figure:first-child{
+  grid-column:1 / span 7;
+}
+.space-gallery figure:nth-child(2){
+  grid-column:8 / span 5;
+  margin-top:80px;
+}
+.space-gallery-extra{
+  margin-bottom:85px;
+}
+.space-gallery-extra figure:first-child{
+  grid-column:1 / span 5;
+  height:clamp(300px,31vw,480px);
+  margin-top:0;
+}
+.space-gallery-extra figure:nth-child(2){
+  grid-column:6 / span 7;
+  height:clamp(360px,38vw,590px);
+  margin-top:70px;
+}
+.space-gallery img{
+  filter:saturate(.76);
+  transition:transform 1s var(--tcl-ease);
+}
+.space-gallery figure:hover img{
+  transform:scale(1.022);
+}
+.space-stats{
+  border-top:1px solid var(--tcl-line);
+  padding-top:28px;
+}
+
+/* --- 04 OFFERS: turn cards into a Maison catalogue --- */
+.offers{
+  padding-top:clamp(9rem,13vw,13rem);
+  padding-bottom:clamp(9rem,13vw,13rem);
+}
+.offers-head{
+  width:min(82%,var(--content));
+}
+.identity-title{
+  display:block;
+  font-size:clamp(4.4rem,7.3vw,8rem);
+  line-height:.82;
+  letter-spacing:-.035em;
+  margin-top:28px;
+}
+.identity-title span,
+.identity-title i{
+  display:block;
+}
+.identity-title i{
+  text-align:right;
+}
+.offers-head>p{
+  max-width:520px;
+  margin-top:45px;
+  line-height:1.85;
+}
+.identity-image{
+  width:min(74%,var(--content));
+  margin:90px 9% 0 auto;
+  aspect-ratio:16/7;
+}
+.identity-image img{
+  object-position:center 48%;
+  transition:transform 1s var(--tcl-ease);
+}
+.offer-grid{
+  width:min(82%,var(--content));
+  display:block;
+  margin-top:95px;
+  border-top:1px solid var(--tcl-line);
+}
+.offer-grid article{
+  display:grid;
+  grid-template-columns:60px 1.2fr 1.5fr auto;
+  align-items:center;
+  gap:28px;
+  min-height:122px;
+  padding:22px 0;
+  border-bottom:1px solid var(--tcl-line);
+  transition:padding .45s var(--tcl-ease),background .45s var(--tcl-ease);
+}
+.offer-grid article:hover{
+  padding-left:18px;
+  padding-right:18px;
+  background:rgba(155,123,72,.055);
+}
+.offer-grid article>span{
+  font-size:9px;
+  letter-spacing:.2em;
+  color:var(--tcl-gold);
+}
+.offer-grid h3{
+  font-size:clamp(25px,2.4vw,36px);
+  line-height:1;
+  margin:0;
+}
+.offer-grid p{
+  min-height:0;
+  max-width:360px;
+  margin:0;
+  font-size:12px;
+  line-height:1.65;
+}
+.offer-grid .line-link{
+  white-space:nowrap;
+}
+
+/* --- 05 BEYOND RETAIL: manifesto treatment --- */
+.community{
+  padding-top:clamp(10rem,15vw,15rem);
+  padding-bottom:clamp(9rem,13vw,13rem);
+}
+.community-top{
+  grid-template-columns:1.25fr .75fr;
+  gap:9vw;
+  margin:65px 0 110px;
+}
+.community-top h2{
+  font-size:clamp(4.2rem,7vw,7.6rem);
+  line-height:.84;
+  letter-spacing:-.03em;
+}
+.community-top p{
+  align-self:end;
+  line-height:1.9;
+}
+.community-grid{
+  grid-template-columns:repeat(4,1fr);
+}
+.community-grid>div{
+  min-height:210px;
+  padding:34px 26px 34px 0;
+}
+.community-grid strong{
+  font-size:31px;
+}
+.universes{
+  margin-top:40px;
+  letter-spacing:.18em;
+  line-height:2.4;
+  opacity:.7;
+}
+
+/* --- 06 EXPERIENCE: image as an object, not a card --- */
+.experience{
+  grid-template-columns:.9fr 1.1fr;
+  gap:9vw;
+  padding-top:clamp(9rem,13vw,13rem);
+  padding-bottom:clamp(9rem,13vw,13rem);
+}
+.experience-copy h2{
+  font-size:clamp(3.8rem,6vw,6.3rem);
+  line-height:.86;
+  letter-spacing:-.025em;
+  margin:28px 0 42px;
+}
+.experience-copy p{
+  line-height:1.9;
+}
+.experience-image{
+  height:clamp(500px,55vw,760px);
+}
+.experience-image img{
+  object-position:center;
+  transition:transform 1.1s var(--tcl-ease);
+}
+
+/* --- 07 CITY32: staggered architecture --- */
+.city32{
+  grid-template-columns:.9fr 1.1fr;
+  gap:8vw;
+  padding-top:clamp(9rem,13vw,13rem);
+  padding-bottom:clamp(9rem,13vw,13rem);
+}
+.city32-images{
+  gap:22px;
+}
+.city32-exterior{
+  width:86%;
+  margin-left:auto;
+  aspect-ratio:4/3;
+}
+.city32-interior{
+  width:70%;
+  aspect-ratio:4/3;
+  margin-top:-45px;
+}
+.city32-copy{
+  max-width:650px;
+}
+.city32-copy h2{
+  font-size:clamp(3.8rem,6vw,6.3rem);
+  line-height:.86;
+  letter-spacing:-.025em;
+  margin:28px 0 40px;
+}
+.city32-copy p{
+  line-height:1.9;
+}
+
+/* --- 08 MERIDA: destination image dominance --- */
+.location{
+  grid-template-columns:1.05fr .95fr;
+  gap:8vw;
+  padding-top:clamp(8rem,12vw,12rem);
+  padding-bottom:clamp(8rem,12vw,12rem);
+}
+.location-image{
+  height:clamp(520px,57vw,820px);
+}
+.location-copy h2{
+  font-size:clamp(4.2rem,7vw,7rem);
+  line-height:.84;
+  letter-spacing:-.03em;
+}
+.location-copy p{
+  line-height:1.9;
+}
+
+/* --- 09 SIGNATURE STATEMENT: dark interlude --- */
+.statement{
+  padding:clamp(11rem,16vw,17rem) 7vw;
+  background:var(--tcl-ink);
+  color:var(--tcl-ivory);
+}
+.statement p:first-child{
+  color:#a9a196;
+}
+.statement h2{
+  font-size:clamp(4.5rem,8vw,8.5rem);
+  line-height:.82;
+  letter-spacing:-.035em;
+}
+.statement-sub{
+  color:#bcb4a9!important;
+  max-width:600px;
+  margin:45px auto 0!important;
+  line-height:1.8!important;
+}
+
+/* --- 10 HOSTED BY TCL --- */
+.house-support{
+  padding-top:clamp(8rem,11vw,11rem);
+  padding-bottom:clamp(8rem,11vw,11rem);
+}
+.support-grid{
+  gap:12vw;
+  margin-top:55px;
+}
+.support-grid h2{
+  font-size:clamp(4rem,6vw,6.2rem);
+  line-height:.86;
+}
+.support-grid p{
+  line-height:1.9;
+}
+
+/* --- 11 CONTACT: private invitation --- */
+.contact{
+  grid-template-columns:.85fr 1.15fr;
+  gap:12vw;
+  padding:clamp(9rem,13vw,13rem) var(--gutter);
+  background:#d7ccbc;
+}
+.contact h2{
+  font-size:clamp(4.2rem,7vw,7rem);
+  line-height:.84;
+  letter-spacing:-.03em;
+}
+.contact-intro>p:first-of-type{
+  line-height:1.9;
+}
+.contact-form{
+  gap:30px 35px;
+  align-content:start;
+}
+.form-field{
+  padding-bottom:12px;
+  border-bottom-color:rgba(25,24,21,.28);
+}
+.form-field input,
+.form-field select,
+.form-field textarea{
+  background:transparent;
+}
+.contact-form button,
+.contact-form .submit,
+.contact-form input[type="submit"]{
+  margin-top:10px;
+}
+
+/* --- subtle reveal, only when JS adds .tcl-reveal-ready --- */
+.tcl-reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .9s var(--tcl-ease),transform .9s var(--tcl-ease);
+}
+.tcl-reveal.tcl-visible{
+  opacity:1;
+  transform:none;
+}
+
+/* --- MOBILE: deliberately re-composed, not desktop stacked --- */
+@media (max-width:720px){
+  .hero{
+    min-height:92svh;
+    height:92svh;
+  }
+  .hero-img{
+    object-position:58% center;
+  }
+  .hero-content{
+    width:auto;
+    margin:0;
+    padding:0 8vw 80px;
+    align-self:flex-end;
+  }
+  .hero-content h1{
+    font-size:clamp(3.65rem,16vw,5.6rem);
+    line-height:.84;
+  }
+  .hero-content .lead{
+    margin-top:30px;
+    font-size:13px;
+    line-height:1.75;
+  }
+  .hero-foot{
+    left:8vw;
+    bottom:22px;
+    font-size:7px;
+    letter-spacing:.17em;
+  }
+
+  .intro{
+    display:block;
+    padding-top:6.75rem;
+    padding-bottom:7.25rem;
+  }
+  .intro .label{
+    margin-bottom:48px;
+  }
+  .copy h2{
+    font-size:clamp(3.6rem,15vw,5.4rem);
+    margin-bottom:42px;
+  }
+  .copy p{
+    font-size:14px;
+    line-height:1.85;
+  }
+
+  .space-section .section-head{
+    display:block;
+    margin-bottom:55px;
+  }
+  .space-section .section-head h2{
+    font-size:clamp(3.6rem,15vw,5.3rem);
+    margin:22px 0 30px;
+  }
+  .space-gallery{
+    display:block;
+    margin-bottom:0;
+  }
+  .space-gallery figure,
+  .space-gallery-extra figure{
+    width:100%;
+    height:auto!important;
+    aspect-ratio:4/3;
+    margin:0 0 18px!important;
+  }
+  .space-gallery-extra{
+    margin-top:0;
+  }
+  .space-stats{
+    margin-top:55px;
+  }
+
+  .offers{
+    padding-top:7.5rem;
+    padding-bottom:7.5rem;
+  }
+  .offers-head,
+  .identity-image,
+  .offer-grid{
+    width:84%;
+  }
+  .identity-title{
+    font-size:clamp(3.8rem,15vw,5.4rem);
+    margin-top:25px;
+  }
+  .identity-title i{
+    text-align:left;
+    margin-left:12vw;
+  }
+  .identity-image{
+    width:84%;
+    margin:55px auto 0;
+    aspect-ratio:4/3;
+  }
+  .offer-grid{
+    margin-top:70px;
+  }
+  .offer-grid article{
+    grid-template-columns:38px 1fr;
+    gap:6px 18px;
+    min-height:0;
+    padding:28px 0 30px;
+  }
+  .offer-grid article>span{
+    grid-row:1 / span 2;
+    align-self:start;
+    padding-top:5px;
+  }
+  .offer-grid h3{
+    font-size:29px;
+  }
+  .offer-grid p{
+    grid-column:2;
+    max-width:none;
+    margin-top:8px;
+  }
+  .offer-grid .line-link{
+    grid-column:2;
+    margin-top:12px;
+  }
+
+  .community{
+    padding-top:8rem;
+    padding-bottom:7rem;
+  }
+  .community-top{
+    display:block;
+    margin:48px 0 70px;
+  }
+  .community-top h2{
+    font-size:clamp(3.7rem,15vw,5.5rem);
+  }
+  .community-top p{
+    margin-top:38px;
+    line-height:1.85;
+  }
+  .community-grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .community-grid>div{
+    min-height:170px;
+    padding:24px 18px 25px 0;
+  }
+  .community-grid>div:nth-child(2){
+    padding-left:18px;
+    border-right:0;
+  }
+  .community-grid>div:nth-child(4){
+    padding-left:18px;
+    border-right:0;
+  }
+  .community-grid strong{
+    font-size:25px;
+  }
+
+  .experience{
+    display:flex;
+    flex-direction:column;
+    gap:55px;
+    padding-top:7.5rem;
+    padding-bottom:7.5rem;
+  }
+  .experience-copy h2{
+    font-size:clamp(3.4rem,14vw,5rem);
+  }
+  .experience-image{
+    width:100%;
+    height:auto;
+    aspect-ratio:4/5;
+  }
+
+  .city32{
+    display:flex;
+    flex-direction:column;
+    gap:60px;
+    padding-top:7.5rem;
+    padding-bottom:7.5rem;
+  }
+  .city32-images{
+    width:100%;
+  }
+  .city32-exterior,
+  .city32-interior{
+    width:100%;
+    margin:0;
+    aspect-ratio:4/3;
+  }
+  .city32-copy h2{
+    font-size:clamp(3.5rem,14vw,5.2rem);
+  }
+
+  .location{
+    display:flex;
+    flex-direction:column;
+    gap:55px;
+    padding-top:7.5rem;
+    padding-bottom:7.5rem;
+  }
+  .location-image{
+    width:100%;
+    height:auto;
+    aspect-ratio:4/5;
+  }
+  .location-copy h2{
+    font-size:clamp(3.8rem,15vw,5.5rem);
+  }
+
+  .statement{
+    padding:9rem 8vw;
+  }
+  .statement h2{
+    font-size:clamp(4rem,16vw,6rem);
+  }
+
+  .support-grid{
+    display:block;
+    margin-top:45px;
+  }
+  .support-grid>div+div{
+    margin-top:45px;
+  }
+  .support-grid h2{
+    font-size:clamp(3.8rem,15vw,5.3rem);
+  }
+
+  .contact{
+    display:block;
+    padding:8rem 8vw;
+  }
+  .contact-intro{
+    max-width:none;
+    margin-bottom:65px;
+  }
+  .contact h2{
+    font-size:clamp(3.8rem,15vw,5.5rem);
+  }
+  .contact-form{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:27px;
+  }
+  .form-field-full{
+    grid-column:auto;
+  }
+}
+
+/* motion fallback */
+@media (prefers-reduced-motion:reduce){
+  .tcl-reveal{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+  img,.offer-grid article{
+    transition:none!important;
+  }
+}
+
