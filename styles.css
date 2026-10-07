@@ -1073,3 +1073,39 @@ footer{display:flex;align-items:center;justify-content:space-between;gap:20px;ba
 .universes{color:#bcb3a7;opacity:1}
 .gold-note,p.gold-note{color:#7a5d33!important}
 .community-grid span,.community-grid article>span{color:#c2a572}
+
+/* ===== V6.3 : ajustements de mise en page ===== */
+
+/* 1) Offres : toutes les lignes identiques (plus de marge ni de trait latéral sur 01-04, la 05 est alignée) */
+.offer-grid article{margin-right:0!important;border-right:0!important;grid-template-rows:none;min-height:0}
+@media (min-width:821px){
+  .offer-grid article{min-height:124px;padding-top:26px;padding-bottom:26px;align-items:center}
+  .offer-grid article>span{align-self:center}
+  .offer-grid p{max-width:420px}
+  .offer-grid .line-link{justify-self:end}
+}
+
+/* 2) « One place. Infinite identities. » : texte, photo et liste partagent les mêmes bords gauche et droit */
+@media (min-width:821px){
+  .identity-image{width:min(82%,var(--content));margin:60px auto 0}
+  .offers-head>p{margin-top:36px}
+}
+
+/* 3) « L'espace » : titre sur une seule ligne, 4 photos alignées en grille 2 × 2 */
+@media (min-width:821px){
+  .space-section .section-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:26px 5vw;margin-bottom:64px}
+  .space-section .section-head .label{flex:0 0 100%}
+  .space-section .section-head h2{font-size:clamp(3.4rem,6vw,6.4rem);white-space:nowrap;margin:0}
+  .space-section .section-head h2 br{display:none}
+  .space-section .section-head h2 i{margin-left:.2em}
+  .space-section .section-head>p{flex:0 1 360px;margin:0 0 .6em}
+  .space-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-bottom:22px}
+  .space-gallery figure,.space-gallery-extra figure{grid-column:auto!important;margin-top:0!important;height:auto!important;aspect-ratio:16/10}
+  .space-gallery-extra{margin-bottom:85px}
+}
+/* Tablette : le titre « L'espace » reste sur une ligne ; sur téléphone il se range sur 2 lignes */
+@media (min-width:600px) and (max-width:820px){
+  .space-section .section-head h2{font-size:clamp(2.8rem,7vw,4.4rem)}
+  .space-section .section-head h2 br{display:none}
+  .space-section .section-head h2 i{margin-left:.2em}
+}
