@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://thecollectorslounge.mx/</loc>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url><loc>https://thecollectorslounge.mx/</loc><lastmod>2026-10-06</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://thecollectorslounge.mx/"/><xhtml:link rel="alternate" hreflang="fr" href="https://thecollectorslounge.mx/fr/"/><xhtml:link rel="alternate" hreflang="es" href="https://thecollectorslounge.mx/es/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://thecollectorslounge.mx/"/></url>
+<url><loc>https://thecollectorslounge.mx/fr/</loc><lastmod>2026-10-06</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://thecollectorslounge.mx/"/><xhtml:link rel="alternate" hreflang="fr" href="https://thecollectorslounge.mx/fr/"/><xhtml:link rel="alternate" hreflang="es" href="https://thecollectorslounge.mx/es/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://thecollectorslounge.mx/"/></url>
+<url><loc>https://thecollectorslounge.mx/es/</loc><lastmod>2026-10-06</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://thecollectorslounge.mx/"/><xhtml:link rel="alternate" hreflang="fr" href="https://thecollectorslounge.mx/fr/"/><xhtml:link rel="alternate" hreflang="es" href="https://thecollectorslounge.mx/es/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://thecollectorslounge.mx/"/></url>
 </urlset>

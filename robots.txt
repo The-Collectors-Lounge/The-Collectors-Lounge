@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://thecollectorslounge.mx/sitemap.xml
-
